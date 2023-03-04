@@ -58,6 +58,10 @@ git push
 
 git remote -v  
 
+## Añadir remoto
+
+git remote add "nombre de remoto"
+
 
 ## Canal de Discord del curso
 
