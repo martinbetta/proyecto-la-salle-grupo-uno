@@ -124,8 +124,8 @@ main {
     border: 9px lightgrey solid;
     color: #8861c8;
     border-radius: 50%;
-    padding: 0.3em;
-    height: 50px;
+    padding: 0.2em;
+    height: 90px;
     position: relative;
     top: 0.7em;
 }
@@ -139,7 +139,7 @@ main {
 
 .folio {
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     flex-direction: column;
 }
 #Port, .center {
@@ -322,4 +322,13 @@ footer {
 }
 footer a {
     color: white;
+}
+@media screen and (max-width: 768px) {
+    header {
+        background-image: url(../img/header-mini.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 70px 0;
+    }
 }
