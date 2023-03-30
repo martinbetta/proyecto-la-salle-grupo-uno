@@ -173,7 +173,7 @@ h1 {
     height: 145px;
     margin-bottom: 0.5em;
     /*padding-right: 0.1em;*/
-    /*position: relative;*/
+    position: relative;
 }
 /*
 #galeria {
@@ -359,17 +359,7 @@ footer a {
 }
 
 @media screen and (max-width: 768px) {
-    header {
-        background-image: url(../img/header-mini.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 30vh;
-    }
-    #adver {
-        display: none;
-        visibility: hidden;
-    }
+    
     .zona {
         width: auto;
         text-align: center;
@@ -386,5 +376,18 @@ footer a {
     }
     #formulario label {
         text-align: left;
+    }
+}
+@media screen and (max-width:1024px) {
+    header {
+        background-image: url(../img/header-mini.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 30vh;
+    }
+    #adver {
+        display: none;
+        visibility: hidden;
     }
 }
