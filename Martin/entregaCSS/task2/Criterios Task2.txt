@@ -1,0 +1,18 @@
+AA Success Criterion 1.3.5 Identify Input Purpose 
+APLICA, se agrego Placeholder con información esperada y requeried *
+
+
+A Success Criterion 1.4.1 Use of Color  (aplica)
+Sin problemas
+
+
+AA Success Criterion 1.4.3 Contrast (Minimum)
+Constraste minimo 4.5:1
+Dentro de el link https://webaim.org/resources/contrastchecker/
+Se puede ver si aplica los color de contrate
+Los colores estan ok, evitar grises muy claros
+
+AA Success Criterion 1.4.10 Reflow (no aplica aun)
+
+-Vertical scrolling content at a width equivalent to 320 CSS pixels;
+-Horizontal scrolling content at a height equivalent to 256 CSS pixels.
