@@ -69,9 +69,6 @@ h1 {
 #box3 {
     margin-bottom: 3em;
 }
-.bloque {
-    display: flex;
-}
 .sections {
     margin: 0.2em;
     padding-right: 0.5em;
@@ -210,7 +207,7 @@ iframe {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #956fd3;
+    background-color: #b096da;
 }
 #bajo-margen {
     margin-bottom: 1em;
