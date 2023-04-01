@@ -212,12 +212,6 @@ iframe {
     background-position: center;
     background-color: #956fd3;
 }
-#formulario label {
-    text-align: right;
-}
-.fm-center {
-    display: inline-flex;
-}
 #bajo-margen {
     margin-bottom: 1em;
 }
