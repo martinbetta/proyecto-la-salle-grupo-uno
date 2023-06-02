@@ -1,60 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Servicios que se usaran para vender a las personas">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" type="text/css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+        type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <script src="js/shortcurts.js" async></script>
+    <script src="js/fetchmarquee.js" async></script>
+    <script type="module" src="js/maps.js" async></script>
+    <script type="module" src="js/test.js" async></script>
     <title>Web</title>
 </head>
+
 <body>
     <div class="container-fluid" id="pagina">
         <!-- Cabecera -->
         <div class="row">
             <header class="col-12">
+
                 <h1 class="text-white">My Business Webpage</h1>
             </header>
         </div>
         <!-- Menú -->
+        <div class="row overflow-hidden text-light bg-dark marquee-container position-static text-nowrap">
+            <div class="marquee-intermedio" id="cats-facts"></div>
+        </div>
+        <div class="overflow-hidden text-nowrap">
+            <div class="marquee"></div>
+        </div>
+
+
         <div class="row">
             <nav class="navbar navbar-expand-sm navbar-dark menu">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Logo</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-label="boton-menu" data-message="boton-menu" title="boton-menu" id="menu-boton">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href="#Who">Who We are?</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href="#Services">OurServices</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href="#Port">Portfolio</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link text-white" href="#Location">Location</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link text-white" href="#correo">Email Us</a>
-                      </li>
-                    </ul>
-                  </div>
+                    <a class="navbar-brand" href="#">Logo</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsibleNavbar" aria-label="boton-menu" data-message="boton-menu"
+                        title="boton-menu" id="menu-boton">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#Who">Who We are?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#Services">OurServices</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#Port">Portfolio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#lugar">Location</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#correo">Email Us</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </div>
-        <main  id="espaciado">
+        <main id="espaciado">
             <!-- Who are -->
             <section class="row contenido">
                 <div class="row">
                     <h2 class="col-12 text-center" id="Who">Who we are?</h2>
-                    <p class="col-12 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br>Mauris convallis magna sit amet diam euismod malesuada.</p>
+                    <p class="col-12 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br>Mauris
+                        convallis magna sit amet diam euismod malesuada.</p>
                 </div>
                 <div class="row">
                     <!-- Parte izquierda -->
@@ -62,16 +84,26 @@
                         <h3 class="titulos">Lorem ipsum</h3>
                         <p class="justify-content">
                             <img src="img/1.jpg" id="image1" alt="imagen1">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mauris convallis magna sit amet diam euismod malesuada. 
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mauris convallis magna sit amet
+                            diam euismod malesuada.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
                         </p>
                     </article>
                     <!-- Parte derecha -->
@@ -79,16 +111,22 @@
                         <h3 class="titulos">Lorem ipsum</h3>
                         <p class="justify-content">
                             <img src="img/ad.jpg" class="d-none d-xl-block" id="adver" alt="adversite">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mauris convallis magna sit amet diam euismod malesuada. 
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Nam iaculis vel nibh vitae lacinia. Nullam ut ante id tortor lobortis convallis ut tempus tortor.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mauris convallis magna sit amet
+                            diam euismod malesuada.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Nam iaculis vel nibh vitae lacinia. Nullam ut ante id tortor lobortis convallis ut tempus
+                            tortor.
                         </p><br>
-                        
+
                         <h3 class="titulos">Lorem ipsum</h3>
                         <p class="justify-content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mauris convallis magna sit amet diam euismod malesuada. 
-                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat fermentum metus.
-                            Nam iaculis vel nibh vitae lacinia. Nullam ut ante id tortor lobortis convallis ut tempus tortor. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mauris convallis magna sit amet
+                            diam euismod malesuada.
+                            Vestibulum metus tellus, interdum elementum nisi sed, cursus sodales magna. Proin feugiat
+                            fermentum metus.
+                            Nam iaculis vel nibh vitae lacinia. Nullam ut ante id tortor lobortis convallis ut tempus
+                            tortor. Interdum et malesuada fames ac ante ipsum primis in faucibus.
                         </p>
                     </aside>
                 </div>
@@ -96,51 +134,63 @@
             <!-- Servicios -->
             <section class="row" id="box3">
                 <h2 class="text-center" id="Services">Our Services</h2>
-                    <div class="col-12 col-xl-4 d-flex">
-                        <i class="fa-solid fa-cloud fa-3x iconos"></i>
-                        <article class="sections">
-                            <h3 class="serv">Service 1</h3>
-                            <p class="justify-content">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum obcaecati inventore ipsam. Debitis illo ratione cupiditate eaque eos inventore doloremque quo, sunt modi labore odio a, autem officiis officia veritatis.
-                            </p>
-                        </article>   
-                    </div>
-                    <div class="col-12 col-xl-4 d-flex">
-                        <i class="fa-solid fa-code fa-3x iconos"></i>
-                        <article class="sections">
-                            <h3 class="serv">Service 2</h3>
-                            <p class="justify-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus asperiores rem animi nobis. Quibusdam, libero dolore! Ipsa vitae excepturi necessitatibus tempora culpa repellat, magni dolorem aperiam? Perferendis magnam incidunt quaerat?</p>
-                        </article>
-                    </div>
-                    <div class="col-12 col-xl-4 d-flex">
-                        <i class="fa-solid fa-rss fa-3x iconos"></i>
-                        <article class="sections">
-                            <h3 class="serv">Service 3</h3>
-                            <p class="justify-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas eveniet unde vitae neque laboriosam ullam minus ut similique odio, sit dolorem dolores sequi inventore nobis provident explicabo molestiae! Repellat, voluptatibus?</p>
-                        </article>
-                    </div>
-                    <div class="col-12 col-xl-4 d-flex">
-                        <i class="fa-sharp fa-solid fa-earth-americas fa-3x iconos"></i>
-                        <article class="sections">
-                            <h3 class="serv">Service 4</h3>
-                            <p class="justify-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id eligendi enim cum officiis earum aspernatur quis, debitis nulla odit distinctio, facilis expedita sit illum ipsa eos dignissimos autem quae quos!</p>
-                        </article>
-                    </div>
-                    <div class="col-12 col-xl-4 d-flex">
-                        <i class="fa-solid fa-flag fa-3x iconos"></i>
-                        <article class="sections">
-                            <h3 class="serv">Service 5</h3>
-                            <p class="justify-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem fuga ut quis quod, amet quos modi saepe facere voluptates eos dolore! Distinctio aliquam error dicta ad facere odit ipsam nulla.</p>
-                        </article>
-                    </div>
-                    <div class="col-12 col-xl-4 d-flex">
-                        <i class="fa-solid fa-gear fa-3x iconos"></i>
-                        <article class="sections">
-                            <h3 class="serv">Service 6</h3>
-                            <p class="justify-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, obcaecati hic illum est dolor beatae autem, ipsam labore aperiam laudantium deserunt. Porro, magnam? Accusantium architecto ab eos molestias quidem consequuntur.</p>
-                        </article>
-                    </div>
-                    
+                <div class="col-12 col-xl-4 d-flex">
+                    <i class="fa-solid fa-cloud fa-3x iconos"></i>
+                    <article class="sections">
+                        <h3 class="serv">Service 1</h3>
+                        <p class="justify-content">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum obcaecati inventore ipsam.
+                            Debitis illo ratione cupiditate eaque eos inventore doloremque quo, sunt modi labore odio a,
+                            autem officiis officia veritatis.
+                        </p>
+                    </article>
+                </div>
+                <div class="col-12 col-xl-4 d-flex">
+                    <i class="fa-solid fa-code fa-3x iconos"></i>
+                    <article class="sections">
+                        <h3 class="serv">Service 2</h3>
+                        <p class="justify-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
+                            asperiores rem animi nobis. Quibusdam, libero dolore! Ipsa vitae excepturi necessitatibus
+                            tempora culpa repellat, magni dolorem aperiam? Perferendis magnam incidunt quaerat?</p>
+                    </article>
+                </div>
+                <div class="col-12 col-xl-4 d-flex">
+                    <i class="fa-solid fa-rss fa-3x iconos"></i>
+                    <article class="sections">
+                        <h3 class="serv">Service 3</h3>
+                        <p class="justify-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas eveniet
+                            unde vitae neque laboriosam ullam minus ut similique odio, sit dolorem dolores sequi
+                            inventore nobis provident explicabo molestiae! Repellat, voluptatibus?</p>
+                    </article>
+                </div>
+                <div class="col-12 col-xl-4 d-flex">
+                    <i class="fa-sharp fa-solid fa-earth-americas fa-3x iconos"></i>
+                    <article class="sections">
+                        <h3 class="serv">Service 4</h3>
+                        <p class="justify-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id eligendi
+                            enim cum officiis earum aspernatur quis, debitis nulla odit distinctio, facilis expedita sit
+                            illum ipsa eos dignissimos autem quae quos!</p>
+                    </article>
+                </div>
+                <div class="col-12 col-xl-4 d-flex">
+                    <i class="fa-solid fa-flag fa-3x iconos"></i>
+                    <article class="sections">
+                        <h3 class="serv">Service 5</h3>
+                        <p class="justify-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem
+                            fuga ut quis quod, amet quos modi saepe facere voluptates eos dolore! Distinctio aliquam
+                            error dicta ad facere odit ipsam nulla.</p>
+                    </article>
+                </div>
+                <div class="col-12 col-xl-4 d-flex">
+                    <i class="fa-solid fa-gear fa-3x iconos"></i>
+                    <article class="sections">
+                        <h3 class="serv">Service 6</h3>
+                        <p class="justify-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam,
+                            obcaecati hic illum est dolor beatae autem, ipsam labore aperiam laudantium deserunt. Porro,
+                            magnam? Accusantium architecto ab eos molestias quidem consequuntur.</p>
+                    </article>
+                </div>
+
             </section>
             <!-- Portfolio imágenes -->
             <section class="row folio">
@@ -173,7 +223,7 @@
                 <div class="col-12 col-md-12 col-xl-4 text-center">
                     <img src="img/10.jpg" class="resize" id="rotacion9" alt="imagen10">
                 </div>
-                
+
             </section>
             <!-- Direccion -->
             <section class="row" id="direction">
@@ -181,7 +231,10 @@
                 <p class="col-12 text-center">You can find us</p>
                 <div class="row text-center d-xl-inline-flex justify-content-center" id="alineado">
                     <div class="col-12 col-xl-6">
-                        <iframe class="rounded-circle border border-dark" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.4112550950117!2d2.1278739510966163!3d41.4085905025414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816c5cc995f%3A0xe6d45d60cbf71998!2sLa%20Salle%20Campus%20Barcelona-URL!5e0!3m2!1ses!2ses!4v1679409709979!5m2!1ses!2ses" title="LaSalle" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe class="rounded-circle border border-dark"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.4112550950117!2d2.1278739510966163!3d41.4085905025414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816c5cc995f%3A0xe6d45d60cbf71998!2sLa%20Salle%20Campus%20Barcelona-URL!5e0!3m2!1ses!2ses!4v1679409709979!5m2!1ses!2ses"
+                            title="LaSalle" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <address class="col-12 col-xl-6 text-center zona">
                         <div class="row">
@@ -189,19 +242,21 @@
                                 <strong>Head Office</strong><br><br>
                                 123456 Blank Street<br>
                                 Phone: <a href="tel:2456-134-321">2456-134-321</a><br>
-                                Email address: <a href="mailto:info@domain.com?subject=el_asunto_del_mensaje">info@domain.com</a><br><br>
+                                Email address: <a
+                                    href="mailto:info@domain.com?subject=el_asunto_del_mensaje">info@domain.com</a><br><br>
                             </div>
                             <div class="col-12">
                                 <strong>Emea</strong><br><br>
                                 Carrer de Sant Joan de la salle, 42<br>
                                 08022 Barcelona<br>
                                 Phone: <a href="tel:932902474">93 290 24 74</a><br>
-                                Email address: <a href="mailto:info@salleurl.edu?subject=el_asunto_del_mensaje">info@salleurl.edu</a><br><br>
+                                Email address: <a
+                                    href="mailto:info@salleurl.edu?subject=el_asunto_del_mensaje">info@salleurl.edu</a><br><br>
                             </div>
                         </div>
                     </address>
                 </div>
-                
+
             </section>
             <!-- Formulario -->
             <section class="row no-gutters text-white" id="mail">
@@ -210,66 +265,78 @@
                     <div class="row mb-3 text-center d-block">
                         <label for="fname" class="col-sm-1 col-form-label text-danger text-xl-right">Name*:</label>
                         <div class="col-sm-5 text-center d-inline-flex">
-                            <input type="text" class="form-control" id="fname" name="fname" placeholder="su nombre" autocomplete="name" required><br>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="su nombre"
+                                autocomplete="name" required><br>
                         </div>
-                     </div>
+                    </div>
                     <div class="row mb-3 text-center d-block">
                         <label for="email" class="col-sm-1 col-form-label text-danger text-xl-right">Email*:</label>
                         <div class="col-sm-5 text-center d-inline-flex">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="su email" autocomplete="email" required><br>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="su email"
+                                autocomplete="email" required><br>
                         </div>
-                     </div>
+                    </div>
                     <div class="row mb-3 text-center d-block">
                         <label for="tel" class="col-sm-1 col-form-label text-xl-right">Phone:</label>
                         <div class="col-sm-5 text-center d-inline-flex">
-                            <input type="tel" class="form-control" id="tel" name="tel" placeholder="telefono" autocomplete="tel"><br>
+                            <input type="tel" class="form-control" id="tel" name="tel" placeholder="telefono"
+                                autocomplete="tel"><br>
                         </div>
                     </div>
                     <div class="row mb-3 text-center d-block">
                         <label for="subject" class="col-sm-1 col-form-label text-danger text-xl-right">Subject*:</label>
                         <div class="col-sm-5 text-center d-inline-flex">
-                            <input type="text" class="form-control" id="subject" name="subject" placeholder="asunto" required><br>
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="asunto"
+                                required><br>
                         </div>
-                     </div>
+                    </div>
                     <div class="row mb-3 text-center d-block">
                         <label for="message" class="col-sm-1 col-form-label text-danger text-xl-right">Message*:</label>
                         <div class="col-sm-5 text-center d-inline-flex">
-                            <textarea id="message" class="form-control" name="message" rows="5" cols="23" placeholder="escriba aquí" required></textarea><br>
+                            <textarea id="message" class="form-control" name="message" rows="5" cols="23"
+                                placeholder="escriba aquí" required></textarea><br>
                         </div>
-                     </div>
+                    </div>
                     <div class="text-center" id="bajo-margen">
                         <button type="submit" class="btn btn-light">Send</button>
                     </div>
                 </form>
                 <div class="container">
-                    <button class="text-white position-fixed border-0" aria-label="go-to-top" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+                    <button class="text-white position-fixed border-0" aria-label="go-to-top" onclick="topFunction()"
+                        id="myBtn" title="Go to top">Top</button>
                 </div>
             </section>
         </main>
-        <footer class="row d-block no-gutters text-white pie" >
+        <footer class="row d-block no-gutters text-white pie">
             &copy; 2016 - <a class="text-white" href="https://www.salleurl.edu/es">LaSalle.</a> All Rights Reserved.
         </footer>
+    </div>
+    <div data-action="keypress.?->keyNav#showHelp" aria-label="navigationHelp" class="modal position-fixed z-3"
+        id="mymodal">
+
+
     </div>
     <script>
         // Get the button
         let mybutton = document.getElementById("myBtn");
-        
+
         // When the user scrolls down 150px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-        
+        window.onscroll = function () { scrollFunction() };
+
         function scrollFunction() {
-          if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-            mybutton.style.display = "block";
-          } else {
-            mybutton.style.display = "none";
-          }
+            if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
         }
-        
+
         // When the user clicks on the button, scroll to the top of the document
         function topFunction() {
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         }
-        </script>
+    </script>
 </body>
+
 </html>
