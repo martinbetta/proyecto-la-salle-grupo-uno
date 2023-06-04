@@ -1,6 +1,6 @@
 //Fetch Marquesina
-/*
-const url = "https://catfact.ninja/fact";
+
+const url = "https://catfact.ninja/fact?max_length=200";
 const div = document.querySelector("#cats-facts")
 
 async function loadFact() {
@@ -13,18 +13,21 @@ async function showFact() {
 
     const fact = await loadFact()
     const article = document.createElement("article")
-    article.classList.add("marquee-text")
-    div.innerText = fact
+    article.classList.add("d-inline")
+    article.innerText = fact
     div.appendChild(article)
 }
 
+
 async function cleanupOne() {
-    div.removeChild(div.firstChild)
+    if (div.firstChild) {
+        div.removeChild(div.firstChild)
+    }
 }
 
-setInterval(showFact, 5000)
 
-setTimeout(() => setInterval(cleanupOne, 5000), 35000)*/
+setInterval(showFact, 10000)
+setTimeout(() => setInterval(cleanupOne, 10000), 20000)
 
 /*
 const url = "https://catfact.ninja/fact";

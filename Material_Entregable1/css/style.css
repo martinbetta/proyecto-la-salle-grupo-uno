@@ -34,12 +34,6 @@ h1 {
     visibility: hidden;
 }
 
-/* añadir borde blanco boostrap no me convence */
-.show {
-    /*border-top: 1px solid white;*/
-    margin-top: 1em;
-}
-
 /* Animacion menú */
 .menu ul li:hover a {
     color: black;
@@ -50,10 +44,6 @@ h1 {
 .folio {
     background-color: #e7e5e5;
     color: #3f3e3e;
-}
-
-.center {
-    margin-bottom: 1em;
 }
 
 #Who,
@@ -90,9 +80,6 @@ h1 {
 }
 
 /* Services */
-#box3 {
-    margin-bottom: 3em;
-}
 
 .sections {
     margin: 0.2em;
@@ -122,7 +109,6 @@ h1 {
     width: 240px;
     height: 145px;
     margin-bottom: 0.5em;
-    position: relative;
 }
 
 /* Animacion imagenes */
@@ -236,9 +222,6 @@ h1 {
 }
 
 /* Location */
-#direction {
-    margin-bottom: 3em;
-}
 
 iframe {
     width: 400px;
@@ -252,7 +235,7 @@ iframe {
 }
 
 /* Email */
-#mail {
+.mail {
     background-image: url(../img/map-image.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -260,9 +243,6 @@ iframe {
     background-color: #20064d;
 }
 
-#bajo-margen {
-    margin-bottom: 1em;
-}
 
 /* Footer */
 .pie {
@@ -289,13 +269,6 @@ iframe {
 }
 
 /* Modal */
-/*
-.block {
-    backdrop-filter: blur(5px);
-    display: block;
-    padding-left: 0;
-}*/
-
 
 /* Marquesina */
 
@@ -305,28 +278,13 @@ iframe {
 }
 
 .marquee-intermedio {
-    animation: marquee 30s linear infinite;
-    -moz-animation: marquee 30s linear infinite;
-    -webkit-animation: marquee 30s linear infinite;
+    animation: marquee 20s linear infinite;
+    -moz-animation: marquee 20s linear infinite;
+    -webkit-animation: marquee 20s linear infinite;
 }
 
 
 @keyframes marquee {
-    0% {
-        transform: translateX(100%);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-
-.marquee {
-    animation: movimiento 20s linear infinite;
-}
-
-@keyframes movimiento {
     0% {
         transform: translateX(100%);
     }

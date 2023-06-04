@@ -1,3 +1,4 @@
+
 //Coger los datos de la Api de lo que se quiere y guardarlos en una constante
 const myquery = `
 query metros ($cursor:String) {
@@ -38,8 +39,23 @@ const response = await fetch(url, {
   //headers: { "content-type": "application/json" },
   body: JSON.stringify({ query: myquery, variables: variables })
 })
-const text = await response.text()
-console.log(text)
+  //const text = await response.text() original del profe
+  .then(response => response.json())
+  .then(data => {
+    // Aquí puedes acceder a los datos del metro más cercano
+    let MetroNombre = data.data.metroStations;
+    let name = MetroNombre.edges[0].node.name;
+    let latitude = MetroNombre.edges[0].node.coordinates.latitude;
+    let longitude = MetroNombre.edges[0].node.coordinates.longitude;
+
+    // Haz lo que desees con los datos del metro
+    console.log(MetroNombre)
+    console.log("Nombre del metro más cercano: " + name);
+    console.log("Latitud: " + latitude);
+    console.log("Longitud: " + longitude);
+  })
+
+//console.log(text)
 console.log(response)
 //for (const station of text.data.metroStations.edges) {
 //  console.log(station.node.name)

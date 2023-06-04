@@ -1,101 +1,118 @@
-//Agregar evento de escucha de teclado
-document.addEventListener("keydown", function (event) {
-    console.log("tecla presionada: ", event.key)
-    // Obtener el valor de la tecla presionada
-    var tecla = event.key;
-    // Determinar a qué sección se debe desplazar la página
-    switch (tecla) {
-        case "1":
-            window.location = "#Who";
-            break;
-        case "2":
-            window.location = "#Services";
-            break;
-        case "3":
-            window.location = "#Port";
-            break;
-        case "4":
-            window.location = "#lugar";
-            break;
-        case "5":
-            window.location = "#correo";
-            break;
-        case "?":
-            if (event.shiftKey) {
-                showModal();
-            }
-            break;
-        //case "h":
-        //    showModal();
-        //    break
-        case "Escape":
-            hideModal();
-            break;
-        default:
-            console.log(tecla);
-            break;
-    }
-});
 
+// Crear un IntersectionObserver
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.getAttribute("id");
+
+                // Agregar el evento de teclado al documento
+                document.addEventListener("keydown", function (event) {
+                    var tecla = event.key;
+                    // Verificar si se encuentra dentro del formulario
+                    if (event.target.tagName === "INPUT" || event.target.tagName === "SELECT" || event.target.tagName === "TEXTAREA") {
+
+                        // No realizar más acciones dentro del formulario
+                        return;
+                    }
+                    switch (tecla) {
+                        case "1":
+                            window.location = "#Section-Whoare";
+                            break;
+                        case "2":
+                            window.location = "#Section-Services";
+                            break;
+                        case "3":
+                            window.location = "#Section-Portfolio";
+                            break;
+                        case "4":
+                            window.location = "#Section-Map";
+                            break;
+                        case "5":
+                            window.location = "#Section-Form";
+                            break;
+                        case "h":
+                            window.location = "#Home";
+                            break;
+                        case "?":
+                            if (event.shiftKey) {
+                                showModal();
+                            }
+                            break;
+                        case "esc":
+                            hideModal();
+                            break;
+                        case "p":
+                            const previousSection = document.getElementById(sectionId).previousElementSibling;
+                            if (previousSection) {
+                                previousSection.scrollIntoView({ behavior: "smooth" });
+                            }
+                            break;
+                        case "n":
+                            const nextSection = document.getElementById(sectionId).nextElementSibling;
+                            if (nextSection) {
+                                nextSection.scrollIntoView({ behavior: "smooth" });
+                            }
+                            break;
+                        default:
+                            console.log(tecla);
+                            break;
+                    }
+                });
+            }
+        });
+    },
+    { threshold: 0.5 } // Umbral de visibilidad
+);
+
+// Obtener todas las secciones
+const sections = document.querySelectorAll("section");
+
+// Observar cada sección
+sections.forEach((section) => {
+    observer.observe(section);
+});
 
 let temporizadorcierre;
 
+let modal = new bootstrap.Modal(document.querySelector(`[aria-label="navigationHelp"]`));
 
-// Crear el elemento de botón
-let btnCloseModal = document.createElement("button");
-btnCloseModal.id = "btnCloseModal";
-btnCloseModal.type = "button";
-btnCloseModal.classList.add("btn-close");
-btnCloseModal.setAttribute("data-bs-dismiss", "modal");
-btnCloseModal.setAttribute("aria-label", "Close");
-
-// Agregar el evento de clic al botón
-btnCloseModal.addEventListener("click", function () {
-    hideModal();
-});
-
-// Agregar el botón al modal
-let modal = document.querySelector("[aria-label='navigationHelp']");
-modal.appendChild(btnCloseModal);
+// función ocultar contenido
 
 
+let hideModal = function () {
+
+    // modal.classList.remove("show", "d-block");
+    // modal.style.display = "d-none";
+    modal.hide()
+
+    clearTimeout(temporizadorcierre);
+}
 
 //funcion mostrar contenido
 
 
 let showModal = function () {
     console.log("mostrando modal")
-    let modal = document.querySelector(`[aria-label="navigationHelp"]`);
-    modal.classList.add("show", "d-block");
-    modal.innerHTML = modalContent;
-    temporizadorcierre = setTimeout(() => { hideModal() }, 45000)
+
+    modal.show();
+    clearTimeout(temporizadorcierre)
+    temporizadorcierre = setTimeout(() => { hideModal() }, 20000)
 }
 
 
 
 
-// función ocultar contenido
 
 
-let hideModal = function () {
-    let modal = document.querySelector("[aria-label='navigationHelp']");
-    modal.classList.remove("show", "d-block");
-    modal.style.display = "none";
-    modal.innerHTML = "";
-    clearTimeout(temporizadorcierre);
-}
+//Botón cerrar
 
-//Contenido
+// Obtener el botón de cierre por su ID
+let btnCloseModal = document.getElementById("btnCloseModal");
 
-let modalContent = `<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Atajos</h5>
-            
-        </div>
-        <div class="modal-body">
-            <p>Texto de atajos</p>
-        </div>
-    </div>
-</div>`;
+// Agregar el evento de clic al botón
+btnCloseModal.addEventListener("click", function () {
+    hideModal();
+});
+
 

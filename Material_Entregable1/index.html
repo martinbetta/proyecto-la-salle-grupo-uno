@@ -25,20 +25,37 @@
     <div class="container-fluid" id="pagina">
         <!-- Cabecera -->
         <div class="row">
-            <header class="col-12">
+            <header class="col-12" id="Home">
 
                 <h1 class="text-white">My Business Webpage</h1>
             </header>
         </div>
-        <!-- Menú -->
+        <!-- Marquee -->
         <div class="row overflow-hidden text-light bg-dark marquee-container position-static text-nowrap">
             <div class="marquee-intermedio" id="cats-facts"></div>
         </div>
-        <div class="overflow-hidden text-nowrap">
-            <div class="marquee"></div>
+        <!--Modal-->
+        <div data-action="keypress.?->keyNav#showHelp" aria-label="navigationHelp"
+            class="modal fade position-fixed mt-0" id="mymodal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Atajos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="btnCloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tecla 1: ir a la sección #Who</p>
+                        <p>Tecla 2: ir a la sección #Services</p>
+                        <p>Tecla 3: ir a la sección #Port</p>
+                        <p>Tecla 4: ir a la sección #lugar</p>
+                        <p>Tecla 5: ir a la sección #correo</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-
+        <!--Menú-->
         <div class="row">
             <nav class="navbar navbar-expand-sm navbar-dark menu">
                 <div class="container-fluid">
@@ -51,19 +68,19 @@
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#Who">Who We are?</a>
+                                <a class="nav-link text-white" href="#Section-Whoare">Who We are?</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#Services">OurServices</a>
+                                <a class="nav-link text-white" href="#Section-Services">OurServices</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#Port">Portfolio</a>
+                                <a class="nav-link text-white" href="#Section-Portfolio">Portfolio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#lugar">Location</a>
+                                <a class="nav-link text-white" href="#Section-Map">Location</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#correo">Email Us</a>
+                                <a class="nav-link text-white" href="#Section-Form">Email Us</a>
                             </li>
                         </ul>
                     </div>
@@ -72,7 +89,7 @@
         </div>
         <main id="espaciado">
             <!-- Who are -->
-            <section class="row contenido">
+            <section class="row contenido" id="Section-Whoare">
                 <div class="row">
                     <h2 class="col-12 text-center" id="Who">Who we are?</h2>
                     <p class="col-12 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br>Mauris
@@ -132,7 +149,7 @@
                 </div>
             </section>
             <!-- Servicios -->
-            <section class="row" id="box3">
+            <section class="row mb-5" id="Section-Services">
                 <h2 class="text-center" id="Services">Our Services</h2>
                 <div class="col-12 col-xl-4 d-flex">
                     <i class="fa-solid fa-cloud fa-3x iconos"></i>
@@ -193,40 +210,40 @@
 
             </section>
             <!-- Portfolio imágenes -->
-            <section class="row folio">
+            <section class="row folio" id="Section-Portfolio">
                 <h2 class="col-12 text-center" id="Port">Portfolio</h2>
                 <p class="col-12 text-center">There are success projects created by us</p>
-                <div class="col-12 col-md-6 col-xl-4 text-center">
+                <div class="col-12 col-md-6 col-xl-4 text-center position-relative">
                     <img src="img/2.jpg" class="resize" id="rotacion1" alt="imagen2">
                 </div>
-                <div class="col-12 col-md-6 col-xl-4 text-center">
+                <div class="col-12 col-md-6 col-xl-4 text-center position-relative">
                     <img src="img/3.jpg" class="resize" id="rotacion2" alt="imagen3">
                 </div>
-                <div class="col-12 col-md-6 col-xl-4 text-center">
+                <div class="col-12 col-md-6 col-xl-4 text-center position-relative">
                     <img src="img/4.jpg" class="resize" id="rotacion3" alt="imagen4">
                 </div>
-                <div class="col-12 col-md-6 col-xl-4 text-center">
+                <div class="col-12 col-md-6 col-xl-4 text-center position-relative">
                     <img src="img/5.jpg" class="resize" id="rotacion4" alt="imagen5">
                 </div>
-                <div class="col-12 col-md-6 col-xl-4 text-center">
+                <div class="col-12 col-md-6 col-xl-4 text-center position-relative">
                     <img src="img/6.jpg" class="resize" id="rotacion5" alt="imagen6">
                 </div>
-                <div class="col-12 col-md-6 col-xl-4 text-center">
+                <div class="col-12 col-md-6 col-xl-4 text-center position-relative">
                     <img src="img/7.jpg" class="resize" id="rotacion6" alt="imagen7">
                 </div>
-                <div class="col-12 col-md-6 col-xl-4 text-center">
+                <div class="col-12 col-md-6 col-xl-4 text-center position-relative">
                     <img src="img/8.jpg" class="resize" id="rotacion7" alt="imagen8">
                 </div>
-                <div class="col-12 col-md-6 col-xl-4 text-center">
+                <div class="col-12 col-md-6 col-xl-4 text-center position-relative">
                     <img src="img/9.jpg" class="resize" id="rotacion8" alt="imagen9">
                 </div>
-                <div class="col-12 col-md-12 col-xl-4 text-center">
+                <div class="col-12 col-md-12 col-xl-4 text-center position-relative">
                     <img src="img/10.jpg" class="resize" id="rotacion9" alt="imagen10">
                 </div>
 
             </section>
             <!-- Direccion -->
-            <section class="row" id="direction">
+            <section class="row mb-5" id="Section-Map">
                 <h2 class="col-12 text-center" id="lugar">Location</h2>
                 <p class="col-12 text-center">You can find us</p>
                 <div class="row text-center d-xl-inline-flex justify-content-center" id="alineado">
@@ -259,7 +276,7 @@
 
             </section>
             <!-- Formulario -->
-            <section class="row no-gutters text-white" id="mail">
+            <section class="row no-gutters text-white mail" id="Section-Form">
                 <h2 class="text-center" id="correo">Email Us</h2>
                 <form class="row" id="formulario">
                     <div class="row mb-3 text-center d-block">
@@ -297,7 +314,7 @@
                                 placeholder="escriba aquí" required></textarea><br>
                         </div>
                     </div>
-                    <div class="text-center" id="bajo-margen">
+                    <div class="text-center mb-3">
                         <button type="submit" class="btn btn-light">Send</button>
                     </div>
                 </form>
@@ -311,11 +328,9 @@
             &copy; 2016 - <a class="text-white" href="https://www.salleurl.edu/es">LaSalle.</a> All Rights Reserved.
         </footer>
     </div>
-    <div data-action="keypress.?->keyNav#showHelp" aria-label="navigationHelp" class="modal position-fixed z-3"
-        id="mymodal">
 
 
-    </div>
+    <!--Script del botón go to top -->
     <script>
         // Get the button
         let mybutton = document.getElementById("myBtn");
