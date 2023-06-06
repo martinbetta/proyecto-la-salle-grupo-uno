@@ -9,6 +9,10 @@ async function loadFact() {
     return json.fact
 }
 
+(async function () {
+    await showFact();
+  })();
+
 async function showFact() {
 
     const fact = await loadFact()
