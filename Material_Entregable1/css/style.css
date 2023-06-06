@@ -272,10 +272,6 @@ iframe {
 
 /* Marquesina */
 
-.marquee-container {
-
-    width: 100%;
-}
 
 .marquee-intermedio {
     animation: marquee 20s linear infinite;
@@ -289,6 +285,19 @@ iframe {
         transform: translateX(100%);
     }
 
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee-text {
+    animation: marquesina 20s linear infinite;
+}
+
+@keyframes marquesina {
+    0% {
+        transform: translateX(100%);
+    }
     100% {
         transform: translateX(-100%);
     }

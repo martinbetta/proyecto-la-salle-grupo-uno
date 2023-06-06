@@ -1,89 +1,51 @@
-
-/*
 // Selecciona el elemento donde se mostrarán los datos
-const dataContainer = document.querySelector('.marquee');
+const dataContainer = document.querySelector('#gatos');
 
-// Frases personalizadas
-const customFacts = [
-    "Frase personalizada 1",
-    "Frase personalizada 2",
-    "Frase personalizada 3",
-    "Frase personalizada 4",
-    "Frase personalizada 5",
-    "Frase personalizada 6"
-];
+// Variable para almacenar el índice actual
+let currentIndex = 0;
 
-let observer; // Variable para almacenar el IntersectionObserver
-
-// Función para el callback del Intersection Observer
-function observerElement(entries) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            console.log("Elemento eliminado:", entry.target);
-            entry.target.remove();
-        }
-    });
-
-    // Cargar nuevos datos solo si no hay suficientes elementos visibles en el contenedor
-    if (dataContainer.children.length < 4) {
-        console.log("Cargando nuevos datos...");
-        loadCatFacts();
-    }
-}
+// Variable para contar cuántos datos se han mostrado
+let shownCount = 0;
 
 // Función para cargar y mostrar los datos
 function loadCatFacts() {
-    console.log("loadCatFacts() llamada");
-    // Eliminar los elementos hijos existentes
-    while (dataContainer.firstChild) {
-        dataContainer.firstChild.remove();
+    for (let i = 0; i < 2; i++) {
+        loadCatFact();
     }
-
-    // Obtener frases personalizadas aleatorias
-    const randomFacts = getRandomFacts(4);
-    console.log("Frases personalizadas seleccionadas:", randomFacts);
-
-    randomFacts.forEach(fact => {
-        const factElement = document.createElement('span');
-        factElement.classList.add("px-4");
-        factElement.textContent = fact;
-        dataContainer.appendChild(factElement);
-        console.log("Elemento agregado:", factElement);
-    });
-
-    // Si el Intersection Observer no ha sido inicializado, crearlo y observar el contenedor
-    if (!observer) {
-        observer = new IntersectionObserver(observerElement, {
-            root: null,
-            rootMargin: '0px',
-            threshold: 1.0 // Se activa cuando cualquier parte del elemento esté fuera de la pantalla
-        });
-    }
-
-    // Observar los nuevos elementos agregados
-    dataContainer.querySelectorAll('span').forEach(factElement => {
-        observer.observe(factElement);
-    });
 }
 
-// Función para obtener frases personalizadas aleatorias
-function getRandomFacts(count) {
-    const randomFacts = [];
-    const availableFacts = [...customFacts];
+// Función para cargar un dato
+function loadCatFact() {
+    fetch('https://catfact.ninja/fact?max_length=80')
+        .then((response) =>{
+// response.ok será true con respuestas 2XX
+if (!response.ok) {
+    throw new Error("Error HTTP: " + response.status);
+}
+           return response.json()
+        }) 
+        .then(data => {
+            const fact = data.fact;
 
-    for (let i = 0; i < count; i++) {
-        if (availableFacts.length === 0) {
-            break;
-        }
+            const factElement = document.createElement('article');
+            factElement.classList.add("px-4", "d-inline");
+            factElement.textContent = fact;
 
-        const randomIndex = Math.floor(Math.random() * availableFacts.length);
-        const fact = availableFacts.splice(randomIndex, 1)[0];
-        randomFacts.push(fact);
-    }
+            dataContainer.appendChild(factElement);
+            shownCount++;
 
-    return randomFacts;
+            if (shownCount === 2) {
+                shownCount = 0;
+                setTimeout(() => {
+                    dataContainer.innerHTML = '';
+                    loadCatFacts();
+                }, 20000); // Cambiar el tiempo (en milisegundos) según sea necesario
+            }
+        })
+        .catch(error => {
+            console.log('Error:', error);
+        });
 }
 
 // Cargar los datos iniciales
 loadCatFacts();
-*/

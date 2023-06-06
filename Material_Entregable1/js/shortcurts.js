@@ -31,7 +31,7 @@ const observer = new IntersectionObserver(
                         case "5":
                             window.location = "#Section-Form";
                             break;
-                        case "h":
+                        case "i":
                             window.location = "#Home";
                             break;
                         case "?":

@@ -17,16 +17,15 @@ async function showFact() {
 
     const fact = await loadFact()
     const article = document.createElement("article")
-    article.classList.add("d-inline")
+    article.classList.add("d-inline", "px-4")
     article.innerText = fact
     div.appendChild(article)
 }
 
 
 async function cleanupOne() {
-    if (div.firstChild) {
-        div.removeChild(div.firstChild)
-    }
+   
+    div.removeChild(div.firstChild)
 }
 
 
