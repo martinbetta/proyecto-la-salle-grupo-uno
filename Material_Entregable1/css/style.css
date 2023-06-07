@@ -88,8 +88,8 @@ h1 {
 
 /* Iconos Services */
 .iconos {
-    border: 9px lightgrey solid;
     color: #8861c8;
+    border: 9px lightgrey solid;
     border-radius: 50%;
     padding: 0.2em;
     height: 90px;
@@ -229,7 +229,6 @@ iframe {
 }
 
 .zona {
-    text-align: initial;
     width: 22%;
     margin: 2em;
 }

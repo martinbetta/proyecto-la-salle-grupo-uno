@@ -8,15 +8,15 @@ let currentIndex = 0;
 let shownCount = 0;
 
 // Función para cargar y mostrar los datos
-function loadCatFacts() {
+async function loadCatFacts() {
     for (let i = 0; i < 2; i++) {
         loadCatFact();
     }
 }
 
 // Función para cargar un dato
-function loadCatFact() {
-    fetch('https://catfact.ninja/fact?max_length=80')
+async function loadCatFact() {
+   await fetch('https://catfact.ninja/fact?max_length=80')
         .then((response) =>{
 // response.ok será true con respuestas 2XX
 if (!response.ok) {

@@ -1,3 +1,5 @@
+const metros = document.querySelector("#station")
+const coordinates = document.querySelector("#coordinates")
 
 //Coger los datos de la Api de lo que se quiere y guardarlos en una constante
 const myquery = `
@@ -25,22 +27,20 @@ query metros ($cursor:String) {
 //indicar la url de la API (de Saverio)
 const url = "https://healthy-fox-82.deno.dev/graphql"
 const variables = { cursor: null }
-//url.searchParams.set("query", myquery)
-//url.searchParams.set("variables", JSON.stringify(variables))
-//url.searchParams.set("operationName", "metros")
-//console.log(url)
-//const response = await fetch(url
-//)
-
 //esperar a la url, con el metodo post, y el body a mostrar.
 const response = await fetch(url, {
   method: "POST",
-  //mode: "no-cors",
-  //headers: { "content-type": "application/json" },
   body: JSON.stringify({ query: myquery, variables: variables })
 })
   //const text = await response.text() original del profe
-  .then(response => response.json())
+  .then(response => {
+    // response.ok será true con respuestas 2XX
+    if (!response.ok){
+      throw new Error("Error HTTP: " + response.status)
+    }
+    return response.json()
+  })
+    
   .then(data => {
     // Aquí puedes acceder a los datos del metro más cercano
     let MetroNombre = data.data.metroStations;
@@ -49,26 +49,28 @@ const response = await fetch(url, {
     let longitude = MetroNombre.edges[0].node.coordinates.longitude;
 
     // Haz lo que desees con los datos del metro
+
+    // crear constante para visualización del nombre de metro
+    const article = document.createElement("article")
+    article.innerText = name
+    metros.appendChild(article)
+    article.classList.add("px-3")
+
+    // crear constante para visualización de latitude y longitude
+    const coord = document.createElement("article")
+    coord.innerText = latitude + ", " + longitude;
+    coordinates.appendChild(coord)
+    coord.classList.add("px-3")
+
+
     console.log(MetroNombre)
     console.log("Nombre del metro más cercano: " + name);
     console.log("Latitud: " + latitude);
     console.log("Longitud: " + longitude);
   })
-
+.catch(error => console.error(error))
 //console.log(text)
 console.log(response)
-//for (const station of text.data.metroStations.edges) {
-//  console.log(station.node.name)
-//}
-//const nextpage = text.data.metroStations.pageInfo.endCursor
-//variables.cursor = nextpage
-//url.searchParams.set("variables", JSON.stringify(variables))
-//const response2 = await fetch(url)
-//const datos = await response2.json()
-
-//for (const station of datos.data.metroStations.edges) {
-//  console.log(station)
-//}
 
 
 
