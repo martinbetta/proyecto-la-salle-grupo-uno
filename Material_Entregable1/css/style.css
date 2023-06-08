@@ -273,9 +273,9 @@ iframe {
 
 
 .marquee-intermedio {
-    animation: marquee 20s linear infinite;
     -moz-animation: marquee 20s linear infinite;
     -webkit-animation: marquee 20s linear infinite;
+    animation: marquee 20s linear infinite;
 }
 
 
