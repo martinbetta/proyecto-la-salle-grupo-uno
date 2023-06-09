@@ -6,31 +6,37 @@ const bicycleCoord = document.querySelector("#coordinates-bicycle")
 const nameBus = document.querySelector("#bus-station")
 const coordinatesBus = document.querySelector("#location-bus")
 
-if (navigator.geolocation) {
-  // El navegador soporta la geolocalización
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    
-    // Aquí puedes hacer lo que desees con las coordenadas
-    console.log("Latitud: " + latitude + " Longitud: " + longitude);
-    
-  }, function(error) {
-    // Error al obtener la localización
-    console.log("Error al obtener la localización: " + error.message);
+// Agrega esta función para obtener la ubicación del usuario
+function getUserLocation() {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    } else {
+      reject(new Error("Geolocation is not supported by this browser."));
+    }
   });
-} else {
-  // El navegador no soporta la geolocalización
-  console.log("Geolocalización no soportada por el navegador");
 }
 
+
+
 async function getClosestStation(){
+  let latitude = 41.4085865;  // Coordenadas por defecto
+  let longitude = 2.1274931;
+
+  try {
+    // Obtener la ubicación del usuario
+    const position = await getUserLocation();
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+  } catch (error) {
+    console.error("Error getting user location:", error);
+  }
 //Coger los datos de la Api de lo que se quiere y guardarlos en una constante
 const myquery = `
 query stations {
     
     closestMetroStation: metroStation (
-      findBy: {closest: {latitude:41.4085865, longitude: 2.1274931 } }
+      findBy: {closest: {latitude:${latitude}, longitude: ${longitude} } }
     )
     {
       ...on MetroStation{
@@ -43,7 +49,7 @@ query stations {
       }
     }
     closestBikeStation: bikeStation(
-      findBy: { closest: { latitude: 41.4085865, longitude: 2.1274931 } }
+      findBy: { closest: { latitude: ${latitude}, longitude: ${longitude} } }
     ) {
       ...on BikeStation {
         name
@@ -55,7 +61,7 @@ query stations {
       }
     } 
     closestBusStation: busStop (
-      findBy: {closest: {latitude: 41.4085865, longitude: 2.1274931 } }
+      findBy: {closest: {latitude: ${latitude}, longitude: ${longitude} } }
       ) {
       ...on BusStop {
         name
