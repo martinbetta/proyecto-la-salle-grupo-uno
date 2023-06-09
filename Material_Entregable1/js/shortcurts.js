@@ -81,9 +81,6 @@ let modal = new bootstrap.Modal(document.querySelector(`[aria-label="navigationH
 
 
 let hideModal = function () {
-
-    // modal.classList.remove("show", "d-block");
-    // modal.style.display = "d-none";
     modal.hide()
 
     clearTimeout(temporizadorcierre);
@@ -99,10 +96,6 @@ let showModal = function () {
     clearTimeout(temporizadorcierre)
     temporizadorcierre = setTimeout(() => { hideModal() }, 20000)
 }
-
-
-
-
 
 
 //Botón cerrar

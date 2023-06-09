@@ -15,9 +15,8 @@
         integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
         crossorigin="anonymous"></script>
     <script src="js/shortcurts.js" async></script>
-    <script src="js/fetchmarquee.js" async></script>
     <script type="module" src="js/maps.js" async></script>
-    <script type="module" src="js/test.js" async></script>
+    <script type="module" src="js/marquee.js"></script>
     <title>Web</title>
 </head>
 
@@ -31,9 +30,10 @@
             </header>
         </div>
         <!-- Marquee -->
-        <div class="row overflow-hidden text-light bg-dark marquee-container position-static text-nowrap">
-            <div class="marquee-intermedio" id="cats-facts"></div>
+        <div class="row overflow-hidden text-nowrap text-white bg-dark position-static">
+        <div class="marquee-text" id="gatos"></div>
         </div>
+        
         
         <!--Modal-->
         <div data-action="keypress.?->keyNav#showHelp" aria-label="navigationHelp"
@@ -91,9 +91,6 @@
                     </div>
                 </div>
             </nav>
-        </div>
-        <div class="row overflow-hidden text-nowrap text-white bg-dark position-static">
-        <div class="marquee-text" id="gatos"></div>
         </div>
         <main id="espaciado">
             <!-- Who are -->
