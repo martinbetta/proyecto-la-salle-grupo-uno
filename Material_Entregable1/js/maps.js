@@ -110,20 +110,7 @@ console.log(data)
     coordinatesMetro.innerText = latitudemetro + ", " + longitudemetro
     coordinates.appendChild(coordinatesMetro)
     coordinatesMetro.classList.add("px-3")
-/*
-    // visualización de nombre de bicicletas
 
-    const bicyStations = document.createElement("article")
-    bicyStations.innerText = namebici
-    bicycle.appendChild(bicyStations)
-    bicyStations.classList.add("px-3")
-
-    // visualización de coordenadas de bicicletas
-    const coordinatesBicy = document.createElement("article")
-    coordinatesBicy.innerText = bicylatitud + ", " + bicylongitud;
-    bicycleCoord.appendChild(coordinatesBicy)
-    coordinatesBicy.classList.add("px-3")
-*/
     // visualización de buses
 
     const busStation = document.createElement("article")
