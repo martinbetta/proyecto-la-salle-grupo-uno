@@ -1,8 +1,6 @@
 // definir constantes que se usarán para visualizar el contenido
 const metros = document.querySelector("#station")
 const coordinates = document.querySelector("#coordinates")
-const bicycle = document.querySelector("#bicycle-station")
-const bicycleCoord = document.querySelector("#coordinates-bicycle")
 const nameBus = document.querySelector("#bus-station")
 const coordinatesBus = document.querySelector("#location-bus")
 
@@ -82,13 +80,7 @@ console.log(data)
     let latitudemetro = stationmetro.coordinates.latitude
     let longitudemetro = stationmetro.coordinates.longitude
   
-/*
-    //acceder a los datos de la bicicletas
-    let bici = data.data.closestBikeStation;
-    let namebici = bici.name;
-    let bicylongitud = bici.coordinates.longitude
-    let bicylatitud = bici.coordinates.latitude
-*/
+
     //acceder a los datos de los buses
     let bus = data.data.closestBusStation
     let busName = bus.name
