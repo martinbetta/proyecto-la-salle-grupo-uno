@@ -48,18 +48,7 @@ query stations {
         }
       }
     }
-    closestBikeStation: bikeStation(
-      findBy: { closest: { latitude: ${latitude}, longitude: ${longitude} } }
-    ) {
-      ...on BikeStation {
-        name
-        coordinates {
-          longitude
-          latitude
-        }
-        
-      }
-    } 
+ 
     closestBusStation: busStop (
       findBy: {closest: {latitude: ${latitude}, longitude: ${longitude} } }
       ) {
@@ -84,7 +73,7 @@ const response = await fetch(url, {
 })
 
 const data = await response.json()
-
+console.log(data)
     // Aquí puedes acceder a los datos del metro más cercano
    
     let stationmetro = data.data.closestMetroStation
@@ -93,13 +82,13 @@ const data = await response.json()
     let latitudemetro = stationmetro.coordinates.latitude
     let longitudemetro = stationmetro.coordinates.longitude
   
-
+/*
     //acceder a los datos de la bicicletas
     let bici = data.data.closestBikeStation;
     let namebici = bici.name;
     let bicylongitud = bici.coordinates.longitude
     let bicylatitud = bici.coordinates.latitude
-
+*/
     //acceder a los datos de los buses
     let bus = data.data.closestBusStation
     let busName = bus.name
@@ -121,7 +110,7 @@ const data = await response.json()
     coordinatesMetro.innerText = latitudemetro + ", " + longitudemetro
     coordinates.appendChild(coordinatesMetro)
     coordinatesMetro.classList.add("px-3")
-
+/*
     // visualización de nombre de bicicletas
 
     const bicyStations = document.createElement("article")
@@ -134,7 +123,7 @@ const data = await response.json()
     coordinatesBicy.innerText = bicylatitud + ", " + bicylongitud;
     bicycleCoord.appendChild(coordinatesBicy)
     coordinatesBicy.classList.add("px-3")
-
+*/
     // visualización de buses
 
     const busStation = document.createElement("article")
