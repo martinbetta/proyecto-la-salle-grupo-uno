@@ -65,7 +65,6 @@ export default {
       this.eliminarModo = !this.eliminarModo; // Reinicia el índice del miembro seleccionado
     },
     eliminarMiembro(miembro) {
-      console.log(miembro);
       if (this.eliminarModo) {
         const indice = this.miembros.indexOf(miembro);
         if (indice !== -1) {

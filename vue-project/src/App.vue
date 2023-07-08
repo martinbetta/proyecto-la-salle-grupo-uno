@@ -77,11 +77,15 @@ export default {
     </section>
     <section class="row">
       <!-- PARTE DE PRODUCTOS -->
-      <article class="col-12 col-xl-4 bg-body-tertiary mx-auto rounded shadow">
+      <article
+        class="col-12 col-xl-4 bg-body-tertiary mx-auto rounded shadow mb-4 fondo-componente"
+      >
         <GestionTareas></GestionTareas>
       </article>
       <!-- PARTE DE MIEMBROS -->
-      <aside class="col-12 col-xl-4 bg-body-tertiary mx-auto rounded shadow">
+      <aside
+        class="col-12 col-xl-4 bg-body-tertiary mx-auto rounded shadow fondo-componente"
+      >
         <Usuarios></Usuarios>
       </aside>
     </section>
@@ -95,4 +99,8 @@ export default {
   <BorrarImagen></BorrarImagen>-->
 </template>
 
-<style scoped></style>
+<style scoped>
+.fondo-componente {
+  background-color: #fff3e2 !important;
+}
+</style>
