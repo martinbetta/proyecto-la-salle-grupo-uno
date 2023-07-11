@@ -14,21 +14,22 @@
 export default {
   data() {
     return {
-      tarea: "",
+      tarea: "", // Copiar la tarea a editar si existe
     };
   },
+
   methods: {
     crearTarea() {
       const nuevaTarea = {
-        id: Date.now(),
         tareacreada: this.tarea, //tareacreada se utilizara en el componente mostrarTarea.
         // Agrega más propiedades relevantes aquí
       };
 
       this.$emit("crearTarea", nuevaTarea);
+
       console.log(nuevaTarea);
-      // Reiniciar los campos del formulario
-      this.tarea = "";
+
+      this.tarea = ""; // Reiniciar el campo del formulario
 
       // Reiniciar otros campos relevantes aquí
     },

@@ -31,7 +31,9 @@
       <avatar-nombre
         :avatar="miembro.avatar"
         :nombre="miembro.nombre"
-        @on-click-avatar="eliminarMiembro(miembro)"
+        @on-click-usuario="eliminarMiembro(miembro)"
+        :eliminarusuario="eliminarModo"
+        :class="{ 'bg-danger bg-gradient': eliminarModo }"
       />
     </ul>
   </div>

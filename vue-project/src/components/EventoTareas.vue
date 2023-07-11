@@ -10,43 +10,25 @@
         aria-label="Buscador de tareas"
       />
     </div>
-    <div class="text-end">
-      <div class="dropdown-center d-grid gap-2 d-md-block" role="group">
-        <button
-          class="btn btn-primary dropdown-toggle mb-2"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Gestionar tareas
-        </button>
-        <ul class="dropdown-menu">
-          <li>
-            <button
-              class="btn btn-success mb-1 w-100"
-              @click="mostrarFormularioTareas"
-              type="button"
-            >
-              Añadir tareas
-            </button>
-          </li>
-          <li>
-            <button
-              class="btn btn-danger mb-1 w-100"
-              type="button"
-              @click="activarEliminacionTarea"
-            >
-              {{ eliminaciontarea ? "Eliminación activada" : "Quitar tarea" }}
-            </button>
-          </li>
-          <li>
-            <button class="btn btn-warning w-100" type="button">
-              Editar tareas
-            </button>
-          </li>
-        </ul>
-      </div>
+
+    <div class="d-grid gap-2 d-md-block text-end">
+      <button
+        class="btn btn-success mb-1"
+        @click="mostrarFormularioTareas"
+        type="button"
+      >
+        Añadir tareas
+      </button>
+
+      <button
+        class="btn btn-danger mb-1"
+        type="button"
+        @click="activarEliminacionTarea"
+      >
+        {{ eliminaciontarea ? "Eliminación activada" : "Quitar tarea" }}
+      </button>
     </div>
+
     <formularioTareas v-if="tareaFormulario" @crearTarea="agregarTarea" />
     <ul
       class="list-group shadow mb-1 bg-body-tertiary rounded"
@@ -57,6 +39,8 @@
         :tareacreada="tarea.tareacreada"
         @on-click-tarea-eliminada="eliminarTarea(tarea)"
         :class="{ 'bg-danger bg-gradient': eliminaciontarea }"
+        :eliminartarea="eliminaciontarea"
+        @editarTarea="actualizarTarea"
       />
     </ul>
   </div>
@@ -81,7 +65,9 @@ export default {
       this.tareaFormulario = true;
     },
     agregarTarea(tarea) {
+      tarea.id = this.tareas.length + 1;
       this.tareas.push(tarea);
+
       this.tareaFormulario = false;
     },
     activarEliminacionTarea() {
@@ -95,6 +81,14 @@ export default {
           this.tareas.splice(indicetarea, 1);
           this.eliminaciontarea = false;
         }
+      }
+    },
+    actualizarTarea(tareaActualizada) {
+      const index = this.tareas.findIndex(
+        (tarea) => tarea.id === tareaActualizada.id
+      );
+      if (index !== -1) {
+        this.tareas.splice(index, 1, tareaActualizada);
       }
     },
   },

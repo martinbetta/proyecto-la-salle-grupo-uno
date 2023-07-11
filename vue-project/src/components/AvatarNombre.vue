@@ -1,12 +1,18 @@
 <template>
   <li class="list-group-item">
     <img
-      class="rounded-circle d-inline m-2 border border-black avatar clickable"
+      class="rounded-circle d-inline m-2 border border-black avatar"
       :src="avatar"
       alt="Avatar"
-      @click="$emit('onClickAvatar')"
     />
     <p class="d-inline m-2">{{ nombre }}</p>
+    <button
+      type="button"
+      class="btn-close position-absolute bottom-50 end-0"
+      aria-label="Close"
+      v-if="eliminarusuario"
+      @click="$emit('onClickUsuario')"
+    ></button>
   </li>
 </template>
 
@@ -19,6 +25,9 @@ export default {
     },
     nombre: {
       type: String,
+      required: true,
+    },
+    eliminarusuario: {
       required: true,
     },
   },
