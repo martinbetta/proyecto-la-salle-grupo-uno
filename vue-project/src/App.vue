@@ -36,18 +36,69 @@ export default {
         initialView: "dayGridMonth",
         locales: [esLocale],
         locale: "es",
+        editable: true,
         selectable: true,
+        selectMirror: true,
         headerToolbar: {
           left: "prev,next today",
           center: "title",
-          right: "dayGridMonth,timeGridWeek,listWeek",
+          right: "dayGridMonth,timeGridWeek,timeGridDay",
         },
+        select: this.handleDateSelect,
+        eventClick: this.handleEventClick,
+        eventsSet: this.handleEvents,
       },
+      currentEventTitle: "",
     };
   },
 
   mounted() {},
-  methods: {},
+  methods: {
+    createEventId() {
+      // Genera un ID único utilizando la fecha y hora actual
+      //const timestamp = new Date().getTime();
+      //return `event-${timestamp}`;
+      let eventGuid = 0;
+      return String(`event-${eventGuid++}`);
+    },
+    handleDateSelect(selectInfo) {
+      let title = prompt("Please enter a new title for your event");
+      let calendarApi = selectInfo.view.calendar;
+
+      calendarApi.unselect(); // clear date selection
+
+      if (title) {
+        const eventId = this.createEventId();
+        calendarApi.addEvent({
+          id: eventId,
+          title,
+          start: selectInfo.startStr,
+          end: selectInfo.endStr,
+          allDay: selectInfo.allDay,
+        });
+        const eventInfo = calendarApi.getEventById(eventId);
+        this.handleEventCreate(eventInfo); // Llama al nuevo método handleEventCreate
+      }
+    },
+    handleEventClick(clickInfo) {
+      if (
+        confirm(
+          `Are you sure you want to delete the event '${clickInfo.event.title}'`
+        )
+      ) {
+        clickInfo.event.remove();
+      }
+    },
+    handleEventCreate(eventInfo) {
+      if (eventInfo) {
+        this.currentEventTitle = eventInfo.title;
+      }
+    },
+
+    handleEvents(events) {
+      this.currentEvents = events;
+    },
+  },
 
   watch: {},
 };
@@ -59,10 +110,12 @@ export default {
     <!-- PARTE FECHAS -->
     <section class="row">
       <article class="col-12 mb-5">
-        <NavegacionEventos></NavegacionEventos>
+        <NavegacionEventos
+          :currentEventTitle="currentEventTitle"
+        ></NavegacionEventos>
         <div class="d-grid gap-2 d-md-block text-end mt-2 mt-xl-0">
           <button
-            class="btn border bg-primary border-info rounded-pill"
+            class="btn border bg-primary border-info rounded-pill mb-1"
             type="button"
             @click="Calendariomostrar = !Calendariomostrar"
           >
@@ -71,6 +124,10 @@ export default {
             }}
           </button>
           <FullCalendar v-if="Calendariomostrar" :options="calendarOptions">
+            <template v-slot:eventContent="arg">
+              <b>{{ arg.timeText }}</b>
+              <i>{{ arg.event.title }}</i>
+            </template>
           </FullCalendar>
         </div>
       </article>
