@@ -14,6 +14,7 @@ import NavegacionEventos from "./components/EventoNavegacion.vue";
 //import EjercicioEditable from "./components/TextoEditableEjercicio.vue";
 //import TareaVfor from "./components/ListaTareaEjercicio.vue";
 //import BorrarImagen from "./components/GaleriaImagenesEjercicio.vue";
+//import Slots from "./components/EjercicioSlots.vue";
 
 export default {
   components: {
@@ -27,6 +28,7 @@ export default {
     //EjercicioEditable,
     //TareaVfor,
     //BorrarImagen,
+    //Slots,
   },
   data() {
     return {
@@ -105,6 +107,11 @@ export default {
 </script>
 
 <template>
+  <header>
+    <router-link to="/contactos">Contactos</router-link>
+    <router-link to="/">Home</router-link>
+  </header>
+  <router-view></router-view>
   <h1 class="text-center">Control de eventos</h1>
   <div class="container-fluid">
     <!-- PARTE FECHAS -->
@@ -135,7 +142,7 @@ export default {
     <section class="row">
       <!-- PARTE DE PRODUCTOS -->
       <article
-        class="col-12 col-xl-4 bg-body-tertiary mx-auto rounded shadow mb-4 border fondo-componente"
+        class="col-12 col-xl-4 bg-body-tertiary mx-auto rounded shadow mb-4 mb-xl-0 border fondo-componente"
       >
         <GestionTareas></GestionTareas>
       </article>
@@ -153,7 +160,8 @@ export default {
   <PaisBandera></PaisBandera>
   <EjercicioEditable></EjercicioEditable>
   <TareaVfor></TareaVfor>
-  <BorrarImagen></BorrarImagen>-->
+  <BorrarImagen></BorrarImagen>
+  <Slots></Slots>-->
 </template>
 
 <style scoped>
