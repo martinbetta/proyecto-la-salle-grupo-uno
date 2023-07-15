@@ -78,7 +78,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .fondo-lista {
   background-color: bisque !important;
 }

@@ -19,6 +19,8 @@ export default {
 <template>
   <li>
     <h2>{{ friend.name }}</h2>
+    <p>{{ friend.phone }}</p>
+    <p>{{ friend.email }}</p>
     <router-link :to="'/contactos/' + friend.id"
       ><button>Go to contact</button></router-link
     >
