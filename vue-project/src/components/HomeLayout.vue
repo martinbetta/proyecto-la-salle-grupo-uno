@@ -3,6 +3,7 @@ import GestionTareas from "./EventoTareas.vue";
 import Usuarios from "./EventoUsuarios.vue";
 
 export default {
+  name: "HomeL",
   components: {
     GestionTareas,
     Usuarios,

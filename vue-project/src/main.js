@@ -17,10 +17,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 const routes = [
-    {path: "/", component: Home},
+    {path: "/", component: Home, name: "HomeL"},
     {path: "/contactos", component: Contacts},
     {path: "/contactos/:name", component: usuario},
-    {path: '/:pathMatch(.*)*', component: NotFound, name: "NotFound" },
+    {path: '/:pathMatch(.*)*', component: NotFound, name: "NotPage" },
     {path: "/friends", component: friends},
     {path: "/Ejercicios", component: Ejercicios},
     {path: "/Eventos", component: Calendario}

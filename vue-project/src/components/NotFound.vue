@@ -15,15 +15,25 @@
       <router-link
         class="text-white text-decoration-none btn btn-primary"
         to="/"
-        >Ve al Inicio</router-link
+        >Inicio</router-link
       >
+
+      <!--
+      <button class="btn btn-primary" type="button">
+        <a class="text-white w-100 d-block" href="/friends">Ve al Inicio</a>
+      </button>-->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NotFound",
+  name: "NotPage",
+  //data() {
+  //return {
+  //isNotFound: true,
+  //};
+  //},
 };
 </script>
 
