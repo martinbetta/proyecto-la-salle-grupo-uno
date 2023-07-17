@@ -13,7 +13,7 @@
 
     <div class="d-grid gap-2 d-md-block text-end">
       <button
-        class="btn btn-success mb-1 me-xl-2"
+        class="btn btn-success mb-1 me-0 me-md-2"
         @click="mostrarFormularioTareas"
         type="button"
       >

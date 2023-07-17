@@ -9,6 +9,8 @@ import usuario from "./components/FriendContactView.vue"
 import NotFound from './components/NotFound.vue';
 import Home from "./components/HomeLayout.vue"
 import friends from "./components/EjercicioFriendsDos.vue"
+import Ejercicios from "./components/LayoutEjercicios.vue"
+import Calendario from "./components/CalendarioEventos.vue"
 
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
@@ -18,8 +20,10 @@ const routes = [
     {path: "/", component: Home},
     {path: "/contactos", component: Contacts},
     {path: "/contactos/:name", component: usuario},
-    { path: '/:pathMatch(.*)*', component: NotFound },
-    {path: "/friends", component: friends}
+    {path: '/:pathMatch(.*)*', component: NotFound, name: "NotFound" },
+    {path: "/friends", component: friends},
+    {path: "/Ejercicios", component: Ejercicios},
+    {path: "/Eventos", component: Calendario}
 ];
 
 const router = createRouter({

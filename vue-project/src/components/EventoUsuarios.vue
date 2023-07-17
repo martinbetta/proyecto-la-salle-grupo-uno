@@ -3,7 +3,7 @@
     <h6>Miembros</h6>
     <div class="d-grid gap-2 d-md-block text-end">
       <button
-        class="btn btn-success me-xl-2 mb-2"
+        class="btn btn-success me-0 me-md-2 mb-2"
         type="button"
         @click="mostrarFormularioComponente"
       >
