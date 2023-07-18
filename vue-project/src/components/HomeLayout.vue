@@ -15,9 +15,9 @@ export default {
 };
 </script>
 <template>
-  <h1 class="text-center">Control de eventos</h1>
   <div class="container-fluid">
-    <section class="row">
+    <section class="row p-2">
+      <h1 class="text-center">Control de eventos</h1>
       <!-- PARTE DE PRODUCTOS -->
       <article
         class="col-12 col-xl-4 bg-body-tertiary mx-auto rounded shadow mb-4 mb-xl-0 border fondo-componente"

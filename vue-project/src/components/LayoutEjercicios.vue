@@ -19,18 +19,20 @@ export default {
 };
 </script>
 <template>
-  <Ejerciciosuno></Ejerciciosuno>
-  <EjercicioUsuario></EjercicioUsuario>
-  <PaisBandera></PaisBandera>
-  <EjercicioEditable></EjercicioEditable>
-  <TareaVfor></TareaVfor>
-  <BorrarImagen></BorrarImagen>
-  <Slots></Slots>
-  <div class="text-center">
-    <router-link class="btn btn-primary mx-2" to="/contactos"
-      >Contactos</router-link
-    >
-    <router-link class="btn btn-primary" to="/friends">Friends</router-link>
+  <div class="row g-0">
+    <Ejerciciosuno></Ejerciciosuno>
+    <EjercicioUsuario></EjercicioUsuario>
+    <PaisBandera></PaisBandera>
+    <EjercicioEditable></EjercicioEditable>
+    <TareaVfor></TareaVfor>
+    <BorrarImagen></BorrarImagen>
+    <Slots></Slots>
+    <div class="text-center">
+      <router-link class="btn btn-primary mx-2" to="/contactos"
+        >Contactos</router-link
+      >
+      <router-link class="btn btn-primary" to="/friends">Friends</router-link>
+    </div>
   </div>
 </template>
 <style scoped></style>
