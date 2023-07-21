@@ -24,6 +24,8 @@ export default {
     <router-link :to="'/contactos/' + friend.id"
       ><button>Go to contact</button></router-link
     >
+    <button class="mx-3" @click="$emit('edit', friend)">Editar</button>
+    <button class="mx-1" @click="$emit('del', friend)">Eliminar</button>
   </li>
 </template>
 

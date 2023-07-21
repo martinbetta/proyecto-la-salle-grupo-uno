@@ -58,8 +58,8 @@ export default {
       Tipos de leche: {{ Producto.Leche.join(" - ") }}
     </p>
   </div>
-  <button class="px-4 mx-4" @click="changeButtonText">{{ buttonText }}</button>
-  <button class="px-4 mx-4" @mouseover="changeHoverButtonText">
+  <button class="px-4" @click="changeButtonText">{{ buttonText }}</button>
+  <button class="px-4" @mouseover="changeHoverButtonText">
     {{ hoverButtonText }}
   </button>
   <div>

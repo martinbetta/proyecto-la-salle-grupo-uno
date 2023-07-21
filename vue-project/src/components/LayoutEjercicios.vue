@@ -6,6 +6,7 @@ import EjercicioEditable from "./TextoEditableEjercicio.vue";
 import TareaVfor from "./ListaTareaEjercicio.vue";
 import BorrarImagen from "./GaleriaImagenesEjercicio.vue";
 import Slots from "./EjercicioSlots.vue";
+import Api from "./ApiContactosEjercicios.vue";
 export default {
   components: {
     Ejerciciosuno,
@@ -15,6 +16,7 @@ export default {
     TareaVfor,
     BorrarImagen,
     Slots,
+    Api,
   },
 };
 </script>
@@ -33,6 +35,7 @@ export default {
       >
       <router-link class="btn btn-primary" to="/friends">Friends</router-link>
     </div>
+    <Api></Api>
   </div>
 </template>
 <style scoped></style>
