@@ -25,14 +25,14 @@
 export default {
   data() {
     return {
-      tareaActual: this.tareacreada,
-      tareaEdicion: this.tareacreada,
+      tareaActual: this.tareacreada.tareacreada,
+      tareaEdicion: this.tareacreada.tareacreada,
       editar: false,
     };
   },
   props: {
     tareacreada: {
-      type: String,
+      type: Object,
       required: true,
     },
     eliminartarea: {
@@ -45,6 +45,35 @@ export default {
       this.editar = false;
       this.$emit("editarTarea", this.tareaActual);
     },
+    //async guardarEdicion() {
+    //try {
+    //const tareaActualizada = {
+    //tareacreada: this.tareaEdicion,
+    // Agrega más propiedades relevantes aquí
+    //};
+
+    //const response = await fetch(
+    //`https://todos-ddy8.onrender.com/users/aleh/todos/${this.tareacreada.id}`,
+    //{
+    //method: "PATCH",
+    //headers: {
+    //"Content-Type": "application/json",
+    //},
+    //body: JSON.stringify(tareaActualizada),
+    //}
+    //);
+
+    //if (!response.ok) {
+    //throw new Error("Error al actualizar la tarea");
+    //}
+
+    //this.tareaActual = this.tareaEdicion; // Actualizar la tarea mostrada con la tarea editada
+    //this.editar = false;
+    //this.$emit("editarTarea", tareaActualizada);
+    //} catch (error) {
+    //console.error("Error al actualizar la tarea:", error);
+    //}
+    //},
   },
 };
 </script>

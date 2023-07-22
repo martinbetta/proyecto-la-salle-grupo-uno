@@ -36,7 +36,7 @@
       :key="tarea.id"
     >
       <tareasMostrar
-        :tareacreada="tarea.tareacreada"
+        :tareacreada="{ id: tarea.id, tareacreada: tarea.tareacreada }"
         @on-click-tarea-eliminada="eliminarTarea(tarea)"
         :class="{ 'bg-danger bg-gradient': eliminaciontarea }"
         :eliminartarea="eliminaciontarea"
@@ -64,32 +64,106 @@ export default {
     mostrarFormularioTareas() {
       this.tareaFormulario = true;
     },
-    agregarTarea(tarea) {
-      tarea.id = this.tareas.length + 1;
-      this.tareas.push(tarea);
+    //agregarTarea(tarea) {
+    //tarea.id = this.tareas.length + 1;
+    //this.tareas.push(tarea);
 
-      this.tareaFormulario = false;
-    },
+    //this.tareaFormulario = false;
+    //},
     activarEliminacionTarea() {
       this.eliminaciontarea = !this.eliminaciontarea; //Reiniciar botón eliminacion
     },
 
+    //eliminarTarea(tarea) {
+    //if (this.eliminaciontarea) {
+    //const indicetarea = this.tareas.indexOf(tarea);
+    //if (indicetarea !== -1) {
+    //this.tareas.splice(indicetarea, 1);
+    //this.eliminaciontarea = false;
+    //}
+    //}
+    //},
+    //actualizarTarea(tareaActualizada) {
+    //const index = this.tareas.findIndex(
+    //(tarea) => tarea.id === tareaActualizada.id
+    //);
+    //if (index !== -1) {
+    //this.tareas.splice(index, 1, tareaActualizada);
+    //}
+    //},
+    agregarTarea(tarea) {
+      fetch("https://todos-ddy8.onrender.com/users/aleh/todos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(tarea),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error al crear la tarea");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          tarea.id = data.id; // Actualizar el ID de la tarea con el ID generado por la API
+          this.tareas.push(tarea);
+          this.tareaFormulario = false;
+        })
+        .catch((error) => {
+          console.error("Error al crear la tarea:", error);
+        });
+    },
     eliminarTarea(tarea) {
       if (this.eliminaciontarea) {
-        const indicetarea = this.tareas.indexOf(tarea);
-        if (indicetarea !== -1) {
-          this.tareas.splice(indicetarea, 1);
-          this.eliminaciontarea = false;
-        }
+        fetch(`https://todos-ddy8.onrender.com/users/aleh/todos/${tarea.id}`, {
+          method: "DELETE",
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Error al eliminar la tarea");
+            }
+            const indicetarea = this.tareas.indexOf(tarea);
+            if (indicetarea !== -1) {
+              this.tareas.splice(indicetarea, 1);
+              this.eliminaciontarea = false;
+            }
+          })
+          .catch((error) => {
+            console.error("Error al eliminar la tarea:", error);
+          });
       }
     },
     actualizarTarea(tareaActualizada) {
-      const index = this.tareas.findIndex(
-        (tarea) => tarea.id === tareaActualizada.id
-      );
-      if (index !== -1) {
-        this.tareas.splice(index, 1, tareaActualizada);
-      }
+      fetch(
+        `https://todos-ddy8.onrender.com/users/aleh/todos/${tareaActualizada.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(tareaActualizada),
+        }
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              `Error al actualizar la tarea. Estado de la respuesta: ${response.status} - ${response.statusText}`
+            );
+          }
+          // No necesitas el return response.json() aquí, ya que no estás utilizando el cuerpo de la respuesta en este punto
+        })
+        .then(() => {
+          const index = this.tareas.findIndex(
+            (tarea) => tarea.id === tareaActualizada.id
+          );
+          if (index !== -1) {
+            this.tareas.splice(index, 1, tareaActualizada);
+          }
+        })
+        .catch((error) => {
+          console.error("Error al actualizar la tarea:", error);
+        });
     },
   },
 };

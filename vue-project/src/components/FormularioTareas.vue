@@ -21,16 +21,34 @@ export default {
   methods: {
     crearTarea() {
       const nuevaTarea = {
-        tareacreada: this.tarea, //tareacreada se utilizara en el componente mostrarTarea.
+        tareacreada: this.tarea,
         // Agrega más propiedades relevantes aquí
       };
 
-      this.$emit("crearTarea", nuevaTarea);
+      fetch("https://todos-ddy8.onrender.com/users/aleh/todos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(nuevaTarea),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error al crear la tarea");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          nuevaTarea.id = data.id; // Actualizar el ID de la tarea con el ID generado por la API
+          this.$emit("crearTarea", nuevaTarea);
+        })
+        .catch((error) => {
+          console.error("Error al crear la tarea:", error);
+        });
 
       console.log(nuevaTarea);
 
       this.tarea = ""; // Reiniciar el campo del formulario
-
       // Reiniciar otros campos relevantes aquí
     },
   },
