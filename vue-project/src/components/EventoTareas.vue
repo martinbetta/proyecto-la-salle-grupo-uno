@@ -36,7 +36,8 @@
       :key="tarea.id"
     >
       <tareasMostrar
-        :tareacreada="{ id: tarea.id, tareacreada: tarea.tareacreada }"
+        :text="tarea.text"
+        :id="tarea.id"
         @on-click-tarea-eliminada="eliminarTarea(tarea)"
         :class="{ 'bg-danger bg-gradient': eliminaciontarea }"
         :eliminartarea="eliminaciontarea"
@@ -58,39 +59,19 @@ export default {
       tareaFormulario: false,
       tareas: [],
       eliminaciontarea: false,
+      text: "",
+      id: "",
     };
   },
   methods: {
     mostrarFormularioTareas() {
       this.tareaFormulario = true;
     },
-    //agregarTarea(tarea) {
-    //tarea.id = this.tareas.length + 1;
-    //this.tareas.push(tarea);
 
-    //this.tareaFormulario = false;
-    //},
     activarEliminacionTarea() {
       this.eliminaciontarea = !this.eliminaciontarea; //Reiniciar botón eliminacion
     },
 
-    //eliminarTarea(tarea) {
-    //if (this.eliminaciontarea) {
-    //const indicetarea = this.tareas.indexOf(tarea);
-    //if (indicetarea !== -1) {
-    //this.tareas.splice(indicetarea, 1);
-    //this.eliminaciontarea = false;
-    //}
-    //}
-    //},
-    //actualizarTarea(tareaActualizada) {
-    //const index = this.tareas.findIndex(
-    //(tarea) => tarea.id === tareaActualizada.id
-    //);
-    //if (index !== -1) {
-    //this.tareas.splice(index, 1, tareaActualizada);
-    //}
-    //},
     agregarTarea(tarea) {
       fetch("https://todos-ddy8.onrender.com/users/aleh/todos", {
         method: "POST",
@@ -118,12 +99,15 @@ export default {
       if (this.eliminaciontarea) {
         fetch(`https://todos-ddy8.onrender.com/users/aleh/todos/${tarea.id}`, {
           method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
           .then((response) => {
             if (!response.ok) {
               throw new Error("Error al eliminar la tarea");
             }
-            const indicetarea = this.tareas.indexOf(tarea);
+            const indicetarea = this.tareas.findIndex((t) => t.id === tarea.id); // Buscar el índice de la tarea a eliminar
             if (indicetarea !== -1) {
               this.tareas.splice(indicetarea, 1);
               this.eliminaciontarea = false;
@@ -142,7 +126,7 @@ export default {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(tareaActualizada),
+          body: JSON.stringify({ text: tareaActualizada.text }),
         }
       )
         .then((response) => {
@@ -155,9 +139,10 @@ export default {
         })
         .then(() => {
           const index = this.tareas.findIndex(
-            (tarea) => tarea.id === tareaActualizada.id
-          );
+            (t) => t.id === tareaActualizada.id
+          ); // Buscar el índice de la tarea a actualizar
           if (index !== -1) {
+            // Actualizar la tarea en la lista local con los datos actualizados
             this.tareas.splice(index, 1, tareaActualizada);
           }
         })
