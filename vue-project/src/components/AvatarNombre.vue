@@ -5,7 +5,7 @@
       :src="avatar"
       alt="Avatar"
     />
-    <p class="d-inline m-2">{{ nombre }}</p>
+    <p class="d-inline m-2">{{ name }}</p>
     <button
       type="button"
       class="btn-close position-absolute bottom-50 end-0"
@@ -23,7 +23,7 @@ export default {
       type: String,
       required: true,
     },
-    nombre: {
+    name: {
       type: String,
       required: true,
     },

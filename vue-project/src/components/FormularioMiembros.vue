@@ -6,8 +6,8 @@
         <div class="text-center p-2">
           <label for="avatar">
             <img
-              :src="'https://www.gravatar.com/avatar/default?s=200&r=pg&d=mm'"
-              class="rounded-circle"
+              :src="getAvatarUrl()"
+              class="rounded-circle border border-black avatar"
             />
           </label>
         </div>
@@ -20,8 +20,21 @@
         />
       </div>
       <div>
-        <label class="p-2 mb-2" for="nombre">Nombre:</label>
-        <input type="text" id="nombre" v-model="nombre" />
+        <label class="p-2 mb-2" for="name">Nombre:</label>
+        <input type="text" id="name" placeholder="tu nombre" v-model="name" />
+      </div>
+      <div>
+        <label class="p-2 mb-2" for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="ejemplo@gmail.com"
+          v-model="email"
+        />
+      </div>
+      <div>
+        <label class="p-2 mb-2" for="phone">Teléfono:</label>
+        <input type="text" id="phone" placeholder="45235204" v-model="phone" />
       </div>
       <div class="text-center mb-2">
         <input type="checkbox" id="edad" v-model="edad" />
@@ -38,9 +51,11 @@
 export default {
   data() {
     return {
-      nombre: "",
+      name: "",
       archivo: null,
       edad: null,
+      email: "",
+      phone: "",
       // Agrega más datos relevantes aquí
     };
   },
@@ -55,17 +70,21 @@ export default {
       reader.onload = () => {
         const nuevoMiembro = {
           id: Date.now(), // Generar un ID único (puedes usar otra lógica si prefieres)
-          nombre: this.nombre,
+          name: this.name,
           avatar: reader.result,
+          email: this.email,
+          phone: this.phone,
           // Agrega más propiedades relevantes aquí
         };
 
         this.$emit("crearMiembro", nuevoMiembro);
 
         // Reiniciar los campos del formulario
-        this.nombre = "";
+        this.name = "";
         this.archivo = null;
         this.edad = null;
+        this.email = "";
+        this.phone = "";
         // Reiniciar otros campos relevantes aquí
       };
 
@@ -73,6 +92,17 @@ export default {
         reader.readAsDataURL(this.archivo);
       }
     },
+    getAvatarUrl() {
+      return this.archivo
+        ? URL.createObjectURL(this.archivo)
+        : "https://www.gravatar.com/avatar/default?s=200&r=pg&d=mm";
+    },
   },
 };
 </script>
+<style scoped>
+.avatar {
+  width: 20vh;
+  height: 20vh;
+}
+</style>

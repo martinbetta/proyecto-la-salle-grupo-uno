@@ -30,7 +30,7 @@
     >
       <avatar-nombre
         :avatar="miembro.avatar"
-        :nombre="miembro.nombre"
+        :name="miembro.name"
         @on-click-usuario="eliminarMiembro(miembro)"
         :eliminarusuario="eliminarModo"
         :class="{ 'bg-danger bg-gradient': eliminarModo }"
@@ -53,26 +53,80 @@ export default {
       mostrarFormulario: false,
       miembros: [],
       eliminarModo: false,
+      name: "",
+      phone: "",
+      email: "",
     };
   },
   methods: {
     mostrarFormularioComponente() {
       this.mostrarFormulario = true;
     },
-    agregarMiembro(miembro) {
-      this.miembros.push(miembro);
-      this.mostrarFormulario = false;
+
+    async agregarMiembro(nuevoMiembro) {
+      try {
+        // Hacer la solicitud a la API sin el campo "avatar"
+        const { name, email, phone } = nuevoMiembro;
+        const response = await fetch(
+          "https://contacts-api-yy1b.onrender.com/users/aleh/contacts",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, email, phone }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Error creating member");
+        }
+
+        const data = await response.json();
+
+        // Actualizar la lista de miembros y mostrar el avatar establecido en el formulario
+        this.miembros.push({
+          ...nuevoMiembro,
+          id: data.id,
+          avatar: nuevoMiembro.avatar,
+        });
+        this.mostrarFormulario = false;
+      } catch (error) {
+        console.error("Error creating member:", error);
+      }
     },
     activarEliminarModo() {
       this.eliminarModo = !this.eliminarModo; // Reinicia el índice del miembro seleccionado
     },
-    eliminarMiembro(miembro) {
-      if (this.eliminarModo) {
-        const indice = this.miembros.indexOf(miembro);
-        if (indice !== -1) {
-          this.miembros.splice(indice, 1);
+
+    async eliminarMiembro(miembro) {
+      try {
+        // Hacer la solicitud para eliminar al miembro por su ID
+        const response = await fetch(
+          `https://contacts-api-yy1b.onrender.com/users/aleh/contacts/${miembro.id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Error deleting member");
+        }
+
+        // Actualizar la lista de miembros quitando al miembro eliminado
+
+        const indicemiembro = this.miembros.findIndex(
+          (m) => m.id === miembro.id
+        ); // Buscar el índice del usuario a eliminar
+        if (indicemiembro !== -1) {
+          this.miembros.splice(indicemiembro, 1);
           this.eliminarModo = false;
         }
+      } catch (error) {
+        console.error("Error deleting member:", error);
       }
     },
   },
