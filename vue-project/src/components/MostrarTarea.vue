@@ -2,6 +2,9 @@
   <li class="list-group-item">
     <p class="d-inline">Tarea asignada:</p>
     <p class="d-inline m-2">{{ tareaActual }}</p>
+    <p class="d-inline m-2" v-if="usuarioAsignadoActual">
+      Asignado a: {{ usuarioAsignadoActual }}
+    </p>
     <input v-model="tareaEdicion" v-if="editar" @blur="guardarEdicion" />
     <button
       type="button"
@@ -28,6 +31,7 @@ export default {
       tareaActual: this.text,
       tareaEdicion: this.text,
       editar: false,
+      usuarioAsignadoActual: this.usuarioAsignado,
     };
   },
   props: {
@@ -42,6 +46,10 @@ export default {
       type: String,
       required: true,
     },
+    usuarioAsignado: {
+      type: String,
+      default: "", // Valor predeterminado para el caso de que no haya usuario asignado
+    },
   },
   methods: {
     guardarEdicion() {
@@ -50,6 +58,7 @@ export default {
       this.$emit("editarTarea", {
         id: this.id, // Incluir el ID de la tarea actualizada
         text: this.tareaActual, // Incluir el campo text actualizado
+        userId: this.usuarioAsignadoActual, // Incluir el ID del usuario asignado actual
       });
     },
   },

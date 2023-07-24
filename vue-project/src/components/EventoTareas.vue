@@ -29,7 +29,11 @@
       </button>
     </div>
 
-    <formularioTareas v-if="tareaFormulario" @crearTarea="agregarTarea" />
+    <formularioTareas
+      v-if="tareaFormulario"
+      :usuarios="usuarios"
+      @crearTarea="agregarTarea"
+    />
     <ul
       class="list-group shadow mb-1 bg-body-tertiary rounded"
       v-for="tarea in tareas"
@@ -42,6 +46,7 @@
         :class="{ 'bg-danger bg-gradient': eliminaciontarea }"
         :eliminartarea="eliminaciontarea"
         @editarTarea="actualizarTarea"
+        :usuarioAsignado="getNombreUsuario(tarea.userId)"
       />
     </ul>
   </div>
@@ -61,6 +66,7 @@ export default {
       eliminaciontarea: false,
       text: "",
       id: "",
+      usuarios: [], // Variable para almacenar la lista de usuarios
     };
   },
   methods: {
@@ -118,37 +124,70 @@ export default {
           });
       }
     },
-    actualizarTarea(tareaActualizada) {
-      fetch(
-        `https://todos-ddy8.onrender.com/users/aleh/todos/${tareaActualizada.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ text: tareaActualizada.text }),
+    async actualizarTarea(tareaActualizada) {
+      const tareaData = {
+        text: tareaActualizada.text,
+        userId: tareaActualizada.userId, // Actualizar el ID del usuario asignado en la tarea
+      };
+
+      try {
+        const response = await fetch(
+          `https://todos-ddy8.onrender.com/users/aleh/todos/${tareaActualizada.id}`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(tareaData),
+          }
+        );
+        if (!response.ok) {
+          throw new Error(
+            `Error al actualizar la tarea. Estado de la respuesta: ${response.status} - ${response.statusText}`
+          );
         }
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(
-              `Error al actualizar la tarea. Estado de la respuesta: ${response.status} - ${response.statusText}`
-            );
-          }
-          // No necesitas el return response.json() aquí, ya que no estás utilizando el cuerpo de la respuesta en este punto
-        })
-        .then(() => {
-          const index = this.tareas.findIndex(
-            (t) => t.id === tareaActualizada.id
-          ); // Buscar el índice de la tarea a actualizar
-          if (index !== -1) {
-            // Actualizar la tarea en la lista local con los datos actualizados
-            this.tareas.splice(index, 1, tareaActualizada);
-          }
-        })
-        .catch((error) => {
-          console.error("Error al actualizar la tarea:", error);
-        });
+
+        const index = this.tareas.findIndex(
+          (t) => t.id === tareaActualizada.id
+        ); // Buscar el índice de la tarea a actualizar
+        if (index !== -1) {
+          // Actualizar la tarea en la lista local con los datos actualizados
+
+          this.tareas.splice(index, 1, tareaActualizada);
+        }
+      } catch (error) {
+        console.error("Error al actualizar la tarea:", error);
+      }
+    },
+    // Método para obtener la lista de usuarios desde la API de usuarios
+    // Método para obtener la lista de usuarios desde la API de usuarios
+    async obtenerUsuarios() {
+      try {
+        const response = await fetch(
+          "https://contacts-api-yy1b.onrender.com/users/aleh/contacts"
+        );
+        if (!response.ok) {
+          throw new Error("Error fetching users");
+        }
+        const data = await response.json();
+        this.usuarios = data;
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    },
+    getNombreUsuario(userId) {
+      const usuario = this.usuarios.find((user) => user.id === userId);
+      return usuario ? usuario.name : ""; // Devuelve el nombre del usuario o cadena vacía si no se encuentra el usuario
+    },
+  },
+  mounted() {
+    this.obtenerUsuarios();
+  },
+  watch: {
+    // Llama al método para obtener la lista de usuarios cuando el componente se monta
+    usuarios: {
+      handler: "obtenerUsuarios", // Nombre del método que se ejecutará cuando cambie la propiedad 'usuarios'
+      //immediate: true, // Ejecuta el método una vez al inicio para obtener la lista de usuarios al cargar el componente
     },
   },
 };

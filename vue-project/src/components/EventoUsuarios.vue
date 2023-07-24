@@ -91,6 +91,8 @@ export default {
           avatar: nuevoMiembro.avatar,
         });
         this.mostrarFormulario = false;
+        // Después de crear el nuevo miembro, obtén la lista actualizada de usuarios desde la API
+        this.obtenerUsuarios();
       } catch (error) {
         console.error("Error creating member:", error);
       }
@@ -127,6 +129,19 @@ export default {
         }
       } catch (error) {
         console.error("Error deleting member:", error);
+      }
+    },
+    // Método para obtener la lista de usuarios desde la API de usuarios
+    obtenerUsuarios() {
+      try {
+        fetch("https://contacts-api-yy1b.onrender.com/users/aleh/contacts")
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            this.usuarios = data;
+          });
+      } catch (error) {
+        console.log(error);
       }
     },
   },
