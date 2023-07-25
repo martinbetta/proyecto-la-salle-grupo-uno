@@ -8,6 +8,7 @@
         type="search"
         placeholder="Consulta tu tarea"
         aria-label="Buscador de tareas"
+        v-model="busqueda"
       />
     </div>
 
@@ -43,10 +44,19 @@
         :text="tarea.text"
         :id="tarea.id"
         @on-click-tarea-eliminada="eliminarTarea(tarea)"
-        :class="{ 'bg-danger bg-gradient': eliminaciontarea }"
         :eliminartarea="eliminaciontarea"
         @editarTarea="actualizarTarea"
         :usuarioAsignado="getNombreUsuario(tarea.userId)"
+        :class="{
+          'border border-success border-2':
+            busqueda &&
+            tarea.text.toLowerCase().includes(busqueda.toLowerCase()),
+          'bg-danger bg-gradient': eliminaciontarea,
+        }"
+        v-if="
+          tarea.text.toLowerCase().includes(busqueda.toLowerCase()) ||
+          busqueda === ''
+        "
       />
     </ul>
   </div>
@@ -67,6 +77,7 @@ export default {
       text: "",
       id: "",
       usuarios: [], // Variable para almacenar la lista de usuarios
+      busqueda: "",
     };
   },
   methods: {
@@ -159,7 +170,7 @@ export default {
         console.error("Error al actualizar la tarea:", error);
       }
     },
-    // Método para obtener la lista de usuarios desde la API de usuarios
+
     // Método para obtener la lista de usuarios desde la API de usuarios
     async obtenerUsuarios() {
       try {

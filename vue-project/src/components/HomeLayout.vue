@@ -16,21 +16,23 @@ export default {
 </script>
 <template>
   <div class="container-fluid">
-    <section class="row p-2">
-      <h1 class="text-center">Control de eventos</h1>
-      <!-- PARTE DE PRODUCTOS -->
-      <article
-        class="col-12 col-xl-4 bg-body-tertiary mx-auto rounded shadow mb-4 mb-xl-0 border fondo-componente"
+    <h1 class="text-center">Control de eventos</h1>
+    <!-- PARTE DE PRODUCTOS -->
+    <div class="row">
+      <section
+        class="col-12 col-xl-10 bg-body-tertiary mx-auto rounded shadow mb-4 border pb-2 fondo-componente"
       >
         <GestionTareas></GestionTareas>
-      </article>
-      <!-- PARTE DE MIEMBROS -->
-      <aside
-        class="col-12 col-xl-4 bg-body-tertiary mx-auto rounded shadow border fondo-componente"
+      </section>
+    </div>
+    <!-- PARTE DE MIEMBROS -->
+    <div class="row">
+      <section
+        class="col-12 col-xl-10 bg-body-tertiary mx-auto rounded shadow border fondo-componente"
       >
         <Usuarios></Usuarios>
-      </aside>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 <style scoped>
