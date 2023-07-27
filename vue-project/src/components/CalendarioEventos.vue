@@ -5,15 +5,13 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
-import NavegacionEventos from "./EventoNavegacion.vue";
+
 export default {
   components: {
     FullCalendar,
-    NavegacionEventos,
   },
   data() {
     return {
-      Calendariomostrar: false,
       calendarOptions: {
         plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
         initialView: "dayGridMonth",
@@ -57,8 +55,6 @@ export default {
           end: selectInfo.endStr,
           allDay: selectInfo.allDay,
         });
-        const eventInfo = calendarApi.getEventById(eventId);
-        this.handleEventCreate(eventInfo); // Llama al nuevo método handleEventCreate
       }
     },
     handleEventClick(clickInfo) {
@@ -70,11 +66,6 @@ export default {
         clickInfo.event.remove();
       }
     },
-    handleEventCreate(eventInfo) {
-      if (eventInfo) {
-        this.currentEventTitle = eventInfo.title;
-      }
-    },
 
     handleEvents(events) {
       this.currentEvents = events;
@@ -84,26 +75,14 @@ export default {
 </script>
 <template>
   <!-- PARTE FECHAS -->
-  <section class="row">
-    <article class="col-10 mb-5">
-      <NavegacionEventos
-        :currentEventTitle="currentEventTitle"
-      ></NavegacionEventos>
-      <div class="d-grid gap-2 d-md-block text-end mt-2 mt-xl-0">
-        <button
-          class="btn border bg-primary border-info rounded-pill mb-1"
-          type="button"
-          @click="Calendariomostrar = !Calendariomostrar"
-        >
-          {{ Calendariomostrar ? "Ocultar calendario" : "Mostrar calendario" }}
-        </button>
-        <FullCalendar v-if="Calendariomostrar" :options="calendarOptions">
-          <template v-slot:eventContent="arg">
-            <b>{{ arg.timeText }}</b>
-            <i>{{ arg.event.title }}</i>
-          </template>
-        </FullCalendar>
-      </div>
+  <section class="row g-0">
+    <article class="col-10">
+      <FullCalendar :options="calendarOptions">
+        <template v-slot:eventContent="arg">
+          <b>{{ arg.timeText }}</b>
+          <i>{{ arg.event.title }}</i>
+        </template>
+      </FullCalendar>
     </article>
   </section>
 </template>

@@ -2,7 +2,8 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import ThemeButton from './components/ThemeButton.vue';
+
+
 
 import Contacts from "./components/ContactsEjercicio.vue"
 import {createRouter, createWebHistory} from "vue-router"
@@ -36,5 +37,6 @@ const app = createApp(App)
 const pinia = createPinia()
 app.use(router)
 app.use(pinia)
-app.component('theme-button',ThemeButton)
+
 app.mount('#app')
+
